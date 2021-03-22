@@ -20,11 +20,11 @@ MonoBehaviour:
   - enemy: 1
     amount: 11
     secondsAfterEnemy: 0.4
-    secondsAfterRound: 6
+    secondsAfterRound: 0.6
   - enemy: 2
-    amount: 6
+    amount: 4
     secondsAfterEnemy: 2
-    secondsAfterRound: 0
+    secondsAfterRound: 4
   - enemy: 1
     amount: 11
     secondsAfterEnemy: 0.2
