@@ -7,7 +7,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float speed;
     
     private Transform[] path;
-    private int pathIndex = 0;
+    public int PathIndex { get; private set;} = 0;
 
     void Start()
     {
@@ -19,25 +19,25 @@ public class EnemyMovement : MonoBehaviour
             this.enabled = false;
         }
         else
-            transform.position = path[pathIndex].position;
+            transform.position = path[PathIndex].position;
     }
 
     private void FixedUpdate()
     {
         // Check if the position of the cube and sphere are approximately equal.
-        if (path == null || path.Length == 0 || Vector3.Distance(transform.position, path[pathIndex].position) < 0.001f)
+        if (path == null || path.Length == 0 || Vector3.Distance(transform.position, path[PathIndex].position) < 0.001f)
         {
-            if (pathIndex >= path.Length - 1)
+            if (PathIndex >= path.Length - 1)
             {
                 print("end");
                 Destroy(gameObject);
             }
             else
-                pathIndex++;
+                PathIndex++;
         }
 
         // Move to the target.
         float step = speed * Time.deltaTime; // calculate distance to move
-        transform.position = Vector3.MoveTowards(transform.position, path[pathIndex].position, step);
+        transform.position = Vector3.MoveTowards(transform.position, path[PathIndex].position, step);
     }
 }
