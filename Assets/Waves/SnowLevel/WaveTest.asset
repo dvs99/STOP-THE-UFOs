@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManagerScriptableObject
   spawnRounds:
   - enemy: 0
-    amount: 40
-    secondsAfterEnemy: 0.2
+    amount: 20
+    secondsAfterEnemy: 0.25
     secondsAfterRound: 0
   - enemy: 1
     amount: 11

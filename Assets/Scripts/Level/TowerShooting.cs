@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class TowerShooting : MonoBehaviour
 {
-    [SerializeField] private float Cooldown;
-    [SerializeField] private float Range;
-    [SerializeField] private EnemySpawner Spawner;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private float cooldown;
+    [SerializeField] private float bulletSpeed;
+    [SerializeField] private float range;
+    [SerializeField] private Transform ShootingOrigin;
+    [SerializeField] private EnemySpawner spawner;
 
     private HashSet<EnemyMovement> enemies;
     private Transform[] enemyPath;
@@ -15,14 +18,14 @@ public class TowerShooting : MonoBehaviour
 
     void Start()
     {
-        timeRemaining = Cooldown;
+        timeRemaining = cooldown;
 
         SphereCollider col = gameObject.AddComponent<SphereCollider>();
-        col.radius = Range;
+        col.radius = range;
         col.isTrigger = true;
 
         enemies = new HashSet<EnemyMovement>();
-        enemyPath = Spawner.path;
+        enemyPath = spawner.path;
     }
 
     void Update()
@@ -33,17 +36,22 @@ public class TowerShooting : MonoBehaviour
         {
             if (timeRemaining <= 0)
             {
+                enemies.RemoveWhere(isNull);
                 targetFirstEnemy();
-                transform.LookAt(target.transform);
-                Debug.DrawLine(transform.position, target.transform.position, Color.red, 0.9f);
-                timeRemaining = Cooldown;
+                if (target != null)
+                {
+                    transform.LookAt(target.transform);
+                    transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+                    GameObject instancedBullet = Instantiate(bullet, ShootingOrigin.position, ShootingOrigin.rotation);
+                    instancedBullet.GetComponent<BulletMovement>().Move(bulletSpeed);
+                    timeRemaining = cooldown;
+                }
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        print("hi");
         EnemyMovement enemyMovement = other.GetComponent<EnemyMovement>();
         if (enemyMovement != null)
             enemies.Add(enemyMovement);
@@ -61,23 +69,30 @@ public class TowerShooting : MonoBehaviour
         EnemyMovement firstEnemy = null;
         foreach (EnemyMovement e in enemies)
         {
-            if (e.PathIndex > firstIndexInPath)
+            if (e != null)
             {
-                firstIndexInPath = e.PathIndex;
-                firstEnemy = e;
-                firstDist = Vector3.Distance(e.transform.position, enemyPath[firstIndexInPath].position);
-            }
-            else if (e.PathIndex == firstIndexInPath)
-            {
-                float dist = Vector3.Distance(e.transform.position, enemyPath[firstIndexInPath].position);
-                if (dist < firstDist)
+                if (e.PathIndex > firstIndexInPath)
                 {
+                    firstIndexInPath = e.PathIndex;
                     firstEnemy = e;
-                    firstDist = dist;
+                    firstDist = Vector3.Distance(e.transform.position, enemyPath[firstIndexInPath].position);
+                }
+                else if (e.PathIndex == firstIndexInPath)
+                {
+                    float dist = Vector3.Distance(e.transform.position, enemyPath[firstIndexInPath].position);
+                    if (dist < firstDist)
+                    {
+                        firstEnemy = e;
+                        firstDist = dist;
+                    }
                 }
             }
+            target = firstEnemy;
         }
-        target = firstEnemy;
     }
 
+    private bool isNull(EnemyMovement e)
+    {
+        return e == null;
+    }
 }
