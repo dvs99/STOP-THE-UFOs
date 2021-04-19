@@ -14,7 +14,6 @@ public class EnemySpawner : MonoBehaviour
     private int amountIndex = 0;
     private float timer = 0f;
 
-    // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
@@ -22,20 +21,23 @@ public class EnemySpawner : MonoBehaviour
         {
             if (amountIndex < waves[waveIndex].spawnRounds[waveInnerRoundIndex].amount)
             {
+                //spawn next enemy
                 amountIndex++;
                 Instantiate(enemyPrefabs[(int)waves[waveIndex].spawnRounds[waveInnerRoundIndex].enemy], transform);
                 timer = waves[waveIndex].spawnRounds[waveInnerRoundIndex].secondsAfterEnemy;
             }
             else
             {
+                //round ended
                 timer = waves[waveIndex].spawnRounds[waveInnerRoundIndex].secondsAfterRound;
                 amountIndex = 0;
                 waveInnerRoundIndex++;
+
                 if (waveInnerRoundIndex == waves[waveIndex].spawnRounds.Length)
                 {
+                    //wave ended
                     waveInnerRoundIndex = 0;
-                    enabled = false;
-                    //WAVE DONE
+                    enabled = false; //will start next wave in final version
                 }
             }
         }

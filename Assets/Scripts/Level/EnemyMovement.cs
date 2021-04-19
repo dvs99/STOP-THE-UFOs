@@ -24,11 +24,13 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Check if the position of the cube and sphere are approximately equal.
-        if (path == null || path.Length == 0 || Vector3.Distance(transform.position, path[PathIndex].position) < 0.001f)
+
+        if (Vector3.Distance(transform.position, path[PathIndex].position) < 0.001f)
         {
+            //Got to waypoint
             if (PathIndex >= path.Length - 1)
             {
+                //Got to the end of the level
                 print("end");
                 Destroy(gameObject);
             }
