@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BackFaceOutlines
+  m_Name: ThinBackFaceOulines
   m_Shader: {fileID: 4800000, guid: 7268d008811832749920de25228abf62, type: 3}
   m_ShaderKeywords: USE_PRECALCULATED_OUTLINE_NORMALS
   m_LightmapFlags: 4
@@ -102,7 +102,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _Thickness: 0.8
+    - _Thickness: 0.075
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:

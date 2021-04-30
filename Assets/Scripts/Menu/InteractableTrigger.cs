@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractableTrigger : MonoBehaviour
 {
     [SerializeField] private int outlineLayerNumber;
-    [SerializeField] private GameObject target;
+    [SerializeField] private GameObject[] targets;
     [SerializeField] private Menu menuToLaunch;
 
     private int originalLayerNumber = 1;
@@ -17,8 +17,12 @@ public class InteractableTrigger : MonoBehaviour
         if (player != null)
         {
             player.ShowButtonTip();
-            originalLayerNumber = target.layer;
-            target.layer = outlineLayerNumber;
+            
+            foreach (GameObject t in targets)
+            {
+                originalLayerNumber = t.layer;
+                t.layer = outlineLayerNumber;
+            }
         }
     }
 
@@ -27,7 +31,8 @@ public class InteractableTrigger : MonoBehaviour
         if (other.GetComponent<PlayerInteraction>() == player)
         {
             player.HideButtonTip();
-            target.layer = originalLayerNumber;
+            foreach (GameObject t in targets)
+                t.layer = originalLayerNumber;
             player = null;
         }
     }
