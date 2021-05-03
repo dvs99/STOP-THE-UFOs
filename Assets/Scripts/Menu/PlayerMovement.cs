@@ -47,4 +47,6 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = Vector3.zero;
         movement = Vector3.zero;
     }
+
+    //TODO: add foward model-> GetPositionInSeconds
 }
