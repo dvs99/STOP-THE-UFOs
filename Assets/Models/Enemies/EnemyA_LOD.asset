@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -2081085983, guid: e1a06bd434d2f8146abcee6af7344445, type: 3}
-  m_Name: -6752
+  m_Name: EnemyA_LOD
   m_EditorClassIdentifier: 
   lods:
     lods:
