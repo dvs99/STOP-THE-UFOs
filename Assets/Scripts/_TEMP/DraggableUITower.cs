@@ -113,11 +113,9 @@ public class DraggableUITower : MonoBehaviour
 
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(draggingUICopy.position) - Camera.main.transform.forward * 100f;
             RaycastHit hit;
-            Debug.Log("casting");
             if (Physics.Raycast(worldPos, Camera.main.transform.forward, out hit, Mathf.Infinity, 1 << groundLayerNumber))
             {
                 Debug.DrawRay(worldPos, Camera.main.transform.forward * hit.distance, Color.yellow);
-                Debug.Log("Did Hit");
                 draggingUICopy.gameObject.SetActive(false);
 
                 Vector3 finalPos = worldPos + Camera.main.transform.forward * hit.distance;

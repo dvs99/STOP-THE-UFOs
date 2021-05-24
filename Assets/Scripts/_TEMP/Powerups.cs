@@ -16,6 +16,8 @@ public class Powerups : MonoBehaviour
     [SerializeField] private Text destroyText;
     [SerializeField] private Text speedUpText;
 
+    [SerializeField] private TowerShooting[] spedTowers;
+
     private void Start()
     {
         destroyText.text = destroyUses.ToString();
@@ -36,8 +38,10 @@ public class Powerups : MonoBehaviour
 
     public void speedUp()
     {
-        foreach (TowerShooting tower in FindObjectsOfType<TowerShooting>())
-            tower.MultiplySpeed(speedUpMultiplier);
+        spedTowers = FindObjectsOfType<TowerShooting>();
+        foreach (TowerShooting tower in spedTowers)
+            if (tower != null)
+                tower.MultiplySpeed(speedUpMultiplier);
         StartCoroutine(recoverSpeedAfterSeconds(speedUpSeconds));
         speedUpUses--;
         speedUpText.text = speedUpUses.ToString();
@@ -48,7 +52,8 @@ public class Powerups : MonoBehaviour
     IEnumerator recoverSpeedAfterSeconds(float time)
     {
         yield return new WaitForSeconds(time);
-        foreach (TowerShooting tower in FindObjectsOfType<TowerShooting>())
-            tower.MultiplySpeed(1/speedUpMultiplier);
+        foreach (TowerShooting tower in spedTowers)
+            if (tower!=null)
+                tower.MultiplySpeed(1/speedUpMultiplier);
     }
 }
