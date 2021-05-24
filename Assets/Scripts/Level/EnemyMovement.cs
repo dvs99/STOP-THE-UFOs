@@ -12,9 +12,6 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        //path = GetComponentInParent<EnemySpawner>().path; 
-        //TODO: WHY IS THIS NOT WORKING???
-        
         path = FindObjectOfType<EnemySpawner>().path; 
 
         if (path == null || path.Length == 0)
@@ -35,7 +32,6 @@ public class EnemyMovement : MonoBehaviour
             if (PathIndex >= path.Length - 1)
             {
                 //Got to the end of the level
-                print("end");
                 Destroy(gameObject);
             }
             else
