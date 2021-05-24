@@ -99,11 +99,11 @@ LODGroup:
   - screenRelativeHeight: 0.20453177
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 3385504829915462052}
+    - renderer: {fileID: 0}
   - screenRelativeHeight: 0.027541386
     fadeTransitionWidth: 0.286
     renderers:
-    - renderer: {fileID: 4688429358243322273}
+    - renderer: {fileID: 0}
   m_Enabled: 1
 --- !u!1001 &4655686938408922052
 PrefabInstance:
@@ -192,6 +192,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: 7555185752953191562, guid: 87e6d55a0b2bd2d44bd8f8350510e8bf, type: 3}
+    - target: {fileID: -5864434419113966992, guid: ac726e7621019604dae07ca2d587d1c4, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5864434419113966992, guid: ac726e7621019604dae07ca2d587d1c4, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14dd92f906c1f2c47952d23d83f16365, type: 2}
+    - target: {fileID: -5864434419113966992, guid: ac726e7621019604dae07ca2d587d1c4, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 7555185752953191562, guid: 73bc69acd75812f44b3c8fd7559747ca, type: 3}
     - target: {fileID: -1267789485258517920, guid: ac726e7621019604dae07ca2d587d1c4, type: 3}
       propertyPath: m_CastShadows
       value: 2
@@ -204,6 +216,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: 7555185752953191562, guid: 87e6d55a0b2bd2d44bd8f8350510e8bf, type: 3}
+    - target: {fileID: -203982616842974588, guid: ac726e7621019604dae07ca2d587d1c4, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -203982616842974588, guid: ac726e7621019604dae07ca2d587d1c4, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14dd92f906c1f2c47952d23d83f16365, type: 2}
+    - target: {fileID: -203982616842974588, guid: ac726e7621019604dae07ca2d587d1c4, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 7555185752953191562, guid: 73bc69acd75812f44b3c8fd7559747ca, type: 3}
     - target: {fileID: 919132149155446097, guid: ac726e7621019604dae07ca2d587d1c4, type: 3}
       propertyPath: m_Name
       value: enemy_ufoYellow
@@ -223,15 +247,5 @@ Transform:
 --- !u!23 &6295406911825688384 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: ac726e7621019604dae07ca2d587d1c4, type: 3}
-  m_PrefabInstance: {fileID: 4655686938408922052}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &3385504829915462052 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -1267789485258517920, guid: ac726e7621019604dae07ca2d587d1c4, type: 3}
-  m_PrefabInstance: {fileID: 4655686938408922052}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &4688429358243322273 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -9111636144678686107, guid: ac726e7621019604dae07ca2d587d1c4, type: 3}
   m_PrefabInstance: {fileID: 4655686938408922052}
   m_PrefabAsset: {fileID: 0}
