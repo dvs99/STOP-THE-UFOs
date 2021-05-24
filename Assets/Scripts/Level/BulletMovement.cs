@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
-    [HideInInspector] private float speed;
+    [SerializeField] private float maxSpeed;
+    private float speed;
 
     private bool moving = false;
 
     public void Move(float speed)
     {
-        this.speed = speed;
+        this.speed = Mathf.Min(maxSpeed,speed);
         moving = true;
     }
 
@@ -23,9 +24,10 @@ public class BulletMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.GetComponent<EnemyMovement>() != null)
+        EnemyMovement enemy = other.transform.GetComponent<EnemyMovement>();
+        if (enemy != null)
         {
-            Destroy(other.gameObject);
+            enemy.Kill();
             Destroy(gameObject);
         }
         else if (other.CompareTag("Border"))

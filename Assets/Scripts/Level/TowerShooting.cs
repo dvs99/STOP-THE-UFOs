@@ -4,47 +4,63 @@ using UnityEngine;
 
 public class TowerShooting : MonoBehaviour
 {
+    public float Cooldown;
+    public float BulletSpeed;
+    public float Range;
+    public int Price;
+
     [SerializeField] private GameObject bullet;
-    [SerializeField] private float cooldown;
-    [SerializeField] private float bulletSpeed;
-    [SerializeField] private float range;
     [SerializeField] private Transform ShootingOrigin;
     [SerializeField] private EnemySpawner spawner;
 
     private HashSet<EnemyMovement> enemies;
     private Transform[] enemyPath;
+    private GameObject rangeObject;
     private EnemyMovement target;
     private float timeRemaining;
 
-    void Start()
+    public void StartRunning(EnemySpawner spawner, GameObject rangeObject)
     {
-        timeRemaining = cooldown;
+        timeRemaining = 0;
 
         SphereCollider col = gameObject.AddComponent<SphereCollider>();
-        col.radius = range;
+        col.radius = Range/transform.localScale.x;
         col.isTrigger = true;
 
         enemies = new HashSet<EnemyMovement>();
         enemyPath = spawner.path;
+
+        foreach (Collider c in Physics.OverlapSphere(transform.position, Range))
+        {
+            EnemyMovement enemyMovement = c.gameObject.GetComponent<EnemyMovement>();
+            if (enemyMovement != null)
+                enemies.Add(enemyMovement);
+        }
+
+        this.rangeObject = rangeObject;
+        this.rangeObject.SetActive(false);
     }
 
     void Update()
     {
-        timeRemaining -= Time.deltaTime;
-
-        if (enemies.Count > 0)
+        if (enemyPath != null)
         {
-            if (timeRemaining <= 0)
+            timeRemaining -= Time.deltaTime;
+
+            if (enemies.Count > 0)
             {
-                enemies.RemoveWhere(isNull);
-                targetFirstEnemy();
-                if (target != null)
+                if (timeRemaining <= 0)
                 {
-                    transform.LookAt(target.transform);
-                    transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-                    GameObject instancedBullet = Instantiate(bullet, ShootingOrigin.position, ShootingOrigin.rotation);
-                    instancedBullet.GetComponent<BulletMovement>().Move(bulletSpeed);
-                    timeRemaining = cooldown;
+                    enemies.RemoveWhere(isNull);
+                    targetFirstEnemy();
+                    if (target != null)
+                    {
+                        transform.LookAt(target.transform);
+                        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+                        GameObject instancedBullet = Instantiate(bullet, ShootingOrigin.position, ShootingOrigin.rotation);
+                        instancedBullet.GetComponent<BulletMovement>().Move(BulletSpeed);
+                        timeRemaining = Cooldown;
+                    }
                 }
             }
         }
@@ -52,14 +68,18 @@ public class TowerShooting : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        EnemyMovement enemyMovement = other.GetComponent<EnemyMovement>();
-        if (enemyMovement != null)
-            enemies.Add(enemyMovement);
+        if (enemyPath != null)
+        {
+            EnemyMovement enemyMovement = other.GetComponent<EnemyMovement>();
+            if (enemyMovement != null)
+                enemies.Add(enemyMovement);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        enemies.Remove(other.GetComponent<EnemyMovement>());
+        if (enemyPath != null)
+            enemies.Remove(other.GetComponent<EnemyMovement>());
     }
 
     private void targetFirstEnemy()
@@ -94,5 +114,11 @@ public class TowerShooting : MonoBehaviour
     private bool isNull(EnemyMovement e)
     {
         return e == null;
+    }
+
+    public void MultiplySpeed(float times)
+    {
+        Cooldown /= times;
+        BulletSpeed *= times;
     }
 }

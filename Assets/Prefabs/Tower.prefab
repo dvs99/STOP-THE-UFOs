@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1844097798513850880}
   - component: {fileID: 1033040157144345986}
   m_Layer: 0
-  m_Name: weapon_cannon
+  m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,10 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdfe7eb0d98da44b9a41f612f07c41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cooldown: 0.8
+  BulletSpeed: 9
+  Range: 2
+  Price: 100
   bullet: {fileID: 85395274569476907, guid: 3505d6c973ff055438dcdee7715088ea, type: 3}
-  cooldown: 1
-  bulletSpeed: 1
-  range: 1
+  ShootingOrigin: {fileID: 5370102696079739142}
   spawner: {fileID: 0}
 --- !u!1 &3578005935926306215
 GameObject:

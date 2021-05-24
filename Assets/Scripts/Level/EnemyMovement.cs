@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
-    
+    [SerializeField] private int value;
+
     private Transform[] path;
     public int PathIndex { get; private set;} = 0;
 
@@ -44,5 +45,11 @@ public class EnemyMovement : MonoBehaviour
         // Move to the target.
         float step = speed * Time.deltaTime; // calculate distance to move
         transform.position = Vector3.MoveTowards(transform.position, path[PathIndex].position, step);
+    }
+
+    public void Kill()
+    {
+        Destroy(gameObject);
+        MoneyManager.Instance.Earn(value);
     }
 }
