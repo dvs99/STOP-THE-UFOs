@@ -6,5 +6,6 @@ public enum Enemy
 {
     EnemyA,
     EnemyB,
-    EnemyC
+    EnemyC,
+    EnemyD
 }
