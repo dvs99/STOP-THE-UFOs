@@ -10,12 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27082be04fecc974480b9341a28759ff, type: 3}
-  m_Name: WaveTest
+  m_Name: WaveTestAllEnemies
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManagerScriptableObject
   spawnRounds:
   - enemy: 0
     amount: 20
     secondsAfterEnemy: 0.25
+    secondsAfterRound: 0
+  - enemy: 3
+    amount: 8
+    secondsAfterEnemy: 2
     secondsAfterRound: 0
   - enemy: 1
     amount: 11
@@ -25,7 +29,3 @@ MonoBehaviour:
     amount: 4
     secondsAfterEnemy: 2
     secondsAfterRound: 4
-  - enemy: 1
-    amount: 11
-    secondsAfterEnemy: 0.2
-    secondsAfterRound: 0
