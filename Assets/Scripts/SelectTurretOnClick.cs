@@ -7,7 +7,6 @@ public class SelectTurretOnClick : MonoBehaviour
     public TowerShooting turret;
     private void OnMouseDown()
     {
-        print("dasd");
         turret.Select();
     }
 }

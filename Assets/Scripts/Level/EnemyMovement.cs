@@ -50,7 +50,7 @@ public class EnemyMovement : MonoBehaviour
                 if (PathIndex >= path.Length - 1)
                 {
                     HPManager.Instance.recieveDamage(damage);
-                    Destroy(gameObject);
+                    KillNoSpawningNoMoney();
                 }
                 else
                 {

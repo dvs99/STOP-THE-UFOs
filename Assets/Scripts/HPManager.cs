@@ -32,6 +32,6 @@ public class HPManager : MonoBehaviour
             currentHP = 0;
         HPText.text = currentHP + " HP";
         if (currentHP == 0)
-            ;//LOSE
+            EndGameManager.Instance.End(false);
     }
 }

@@ -9,6 +9,8 @@ public class TowerShooting : MonoBehaviour
     public float Range;
     public int Price;
 
+    [SerializeField] private float RangeMargin;
+
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform ShootingOrigin;
     [SerializeField] private Transform ShootingOriginAlt;
@@ -62,14 +64,18 @@ public class TowerShooting : MonoBehaviour
                             shootFrom = ShootingOriginAlt;
 
                         float aproxTimeToHit = Vector3.Distance(shootFrom.position, target.transform.position) / BulletSpeed;
-                        transform.LookAt(target.GetPositionInSeconds(aproxTimeToHit));
-                        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-                        GameObject instancedBullet = Instantiate(bullet, shootFrom.position, shootFrom.rotation);
-                        instancedBullet.GetComponent<BulletMovement>().Move(BulletSpeed);
-                        target.EstimatedLifeLeft = aproxTimeToHit;
-                        timeRemaining = Cooldown;
-                        if (ShootingOriginAlt != null)
-                            shootwithAlt = !shootwithAlt;
+                        Vector3 futurePos = target.GetPositionInSeconds(aproxTimeToHit);
+                        if (Vector3.Distance(transform.position, futurePos) < Range + RangeMargin)
+                        {
+                            transform.LookAt(futurePos);
+                            transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+                            GameObject instancedBullet = Instantiate(bullet, shootFrom.position, shootFrom.rotation);
+                            instancedBullet.GetComponent<BulletMovement>().Move(BulletSpeed);
+                            target.EstimatedLifeLeft = aproxTimeToHit;
+                            timeRemaining = Cooldown;
+                            if (ShootingOriginAlt != null)
+                                shootwithAlt = !shootwithAlt;
+                        }
                     }
                 }
             }
@@ -88,7 +94,7 @@ public class TowerShooting : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (enemyPath != null)
+        if (enemyPath != null && enemies.Contains(other.GetComponent<EnemyMovement>()))
             enemies.Remove(other.GetComponent<EnemyMovement>());
     }
 
@@ -134,8 +140,11 @@ public class TowerShooting : MonoBehaviour
 
     public void Select()
     {
-        foreach (RangeObject range in FindObjectsOfType<RangeObject>())
-            range.gameObject.SetActive(false);
-        rangeObject.SetActive(true);
+        if (!EndGameManager.Instance.hasEnded())
+        {
+            foreach (RangeObject range in FindObjectsOfType<RangeObject>())
+                range.gameObject.SetActive(false);
+            rangeObject.SetActive(true);
+        }
     }
 }

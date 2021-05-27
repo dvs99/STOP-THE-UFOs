@@ -56,7 +56,7 @@ public class EnemySpawner : MonoBehaviour
                         else
                         {
                             enabled = false;
-                            //WIN
+                            EndGameManager.Instance.SpawningEnded = true;
                         }
                     }
                     else

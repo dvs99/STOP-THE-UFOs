@@ -7,7 +7,10 @@ public class RangeObjectDisabler : MonoBehaviour
 {
     private void OnMouseDown()
     {
-        foreach (RangeObject range in FindObjectsOfType<RangeObject>())
-            range.gameObject.SetActive(false);
+        if (!EndGameManager.Instance.hasEnded())
+        {
+            foreach (RangeObject range in FindObjectsOfType<RangeObject>())
+                range.gameObject.SetActive(false);
+        }
     }
 }

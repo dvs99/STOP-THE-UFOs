@@ -16,7 +16,11 @@ public class Powerups : MonoBehaviour
     [SerializeField] private Text destroyText;
     [SerializeField] private Text speedUpText;
 
-    [SerializeField] private TowerShooting[] spedTowers;
+    [SerializeField] private GameObject speedUpParticleEffect;
+    [SerializeField] private GameObject destroyParticleEffect;
+
+    private TowerShooting[] spedTowers;
+    private Queue<GameObject> particleEffects = new Queue<GameObject>();
 
     private void Start()
     {
@@ -28,6 +32,7 @@ public class Powerups : MonoBehaviour
 
     public void destroy()
     {
+        Instantiate(destroyParticleEffect);
         foreach (EnemyMovement enemy in FindObjectsOfType<EnemyMovement>())
             enemy.KillNoSpawningNoMoney();
         destroyUses--;
@@ -41,7 +46,10 @@ public class Powerups : MonoBehaviour
         spedTowers = FindObjectsOfType<TowerShooting>();
         foreach (TowerShooting tower in spedTowers)
             if (tower != null)
+            {
                 tower.MultiplySpeed(speedUpMultiplier);
+                particleEffects.Enqueue(Instantiate(speedUpParticleEffect, tower.transform.position, Quaternion.identity));
+            }
         StartCoroutine(recoverSpeedAfterSeconds(speedUpSeconds));
         speedUpUses--;
         speedUpText.text = speedUpUses.ToString();
@@ -55,5 +63,8 @@ public class Powerups : MonoBehaviour
         foreach (TowerShooting tower in spedTowers)
             if (tower!=null)
                 tower.MultiplySpeed(1/speedUpMultiplier);
+
+        while (particleEffects.Count > 0)
+            Destroy(particleEffects.Dequeue());
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class BulletMovement : MonoBehaviour
 {
     [SerializeField] private float maxSpeed;
+    [SerializeField] private float explosionRange;
+    [SerializeField] private GameObject explosionParticleEffect;
     private float speed;
 
     private bool moving = false;
@@ -28,6 +30,12 @@ public class BulletMovement : MonoBehaviour
         if (enemy != null)
         {
             enemy.Kill();
+            if (explosionRange > 0)
+            {
+                Instantiate(explosionParticleEffect, transform.position, Quaternion.identity);
+                foreach (Collider col in Physics.OverlapSphere(transform.position, explosionRange))
+                    col.GetComponent<EnemyMovement>()?.Kill();
+            }
             Destroy(gameObject);
         }
         else if (other.CompareTag("Border"))

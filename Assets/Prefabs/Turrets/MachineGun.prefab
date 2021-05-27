@@ -99,10 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdfe7eb0d98da44b9a41f612f07c41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cooldown: 0.8
-  BulletSpeed: 9
-  Range: 2
+  Cooldown: 0.75
+  BulletSpeed: 10
+  Range: 2.5
   Price: 150
+  RangeMargin: 0.15
   bullet: {fileID: 85395274569476907, guid: 3505d6c973ff055438dcdee7715088ea, type: 3}
   ShootingOrigin: {fileID: 5370102696079739142}
   ShootingOriginAlt: {fileID: 5505137354080790005}
