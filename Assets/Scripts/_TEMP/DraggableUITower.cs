@@ -91,6 +91,10 @@ public class DraggableUITower : MonoBehaviour
     {
         if (draggingModelCopy.gameObject.activeSelf && validPosition)
         {
+            SelectedTurretManager.Instance.Deselect();
+            foreach (RangeObject range in FindObjectsOfType<RangeObject>())
+                range.gameObject.SetActive(false);
+
             moneyManager.Pay(price);
             SphereCollider towerObstacle = new GameObject().AddComponent<SphereCollider>();
             towerObstacle.radius = towerSize;

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class EnemySpawner : MonoBehaviour
 {
     public Transform[] path;
+    public Transform[] altPath;
 
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private Wave[] waves;
@@ -38,7 +39,12 @@ public class EnemySpawner : MonoBehaviour
                     //spawn next enemy
                     amountIndex++;
                     EnemyMovement enemy = Instantiate(enemyPrefabs[(int)waves[waveIndex].spawnRounds[waveInnerRoundIndex].enemy], transform).GetComponent<EnemyMovement>();
-                    enemy.run(path, enemyPrefabs);
+                    
+                    if (altPath.Length>0 && Random.Range(0, 2) == 0)
+                        enemy.run(altPath, enemyPrefabs);
+                    else
+                        enemy.run(path, enemyPrefabs);
+                    
                     if (amountIndex < waves[waveIndex].spawnRounds[waveInnerRoundIndex].amount)
                         timer = waves[waveIndex].spawnRounds[waveInnerRoundIndex].secondsAfterEnemy;
                 }

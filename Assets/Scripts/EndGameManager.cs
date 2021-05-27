@@ -24,13 +24,21 @@ public class EndGameManager : MonoBehaviour
 
     public void End(bool won)
     {
-        if (won)
-            EndText.text = wonMsg;
-        else
-            EndText.text = lostMsg;
-        EndGameImage.enabled = true;
-        EndText.enabled = true;
-        EndButton.SetActive(true);
+        if (!EndGameImage.enabled)
+        {
+            if (won)
+                EndText.text = wonMsg;
+            else
+                EndText.text = lostMsg;
+
+            SelectedTurretManager.Instance.Deselect();
+            foreach (RangeObject range in FindObjectsOfType<RangeObject>())
+                range.gameObject.SetActive(false);
+
+            EndGameImage.enabled = true;
+            EndText.enabled = true;
+            EndButton.SetActive(true);
+        }
     }
 
     private void Update()

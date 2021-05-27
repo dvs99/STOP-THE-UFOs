@@ -2780,6 +2780,7 @@ MonoBehaviour:
   - {fileID: 1976537878}
   - {fileID: 462567315}
   - {fileID: 562974739}
+  altPath: []
   enemyPrefabs:
   - {fileID: 5357130665739693900, guid: 77ccb47c9ebf65b4da4014e7f5291baf, type: 3}
   - {fileID: 1576975222724690265, guid: 9b08184d77ec380449e8570d2f52c330, type: 3}
@@ -2787,6 +2788,7 @@ MonoBehaviour:
   - {fileID: 8906467611546206162, guid: 018669bf0503fe44a96c2878a9573532, type: 3}
   waves:
   - {fileID: 11400000, guid: 24248f02a115da64ea795b34ab970424, type: 2}
+  - {fileID: 11400000, guid: 8f7e6f38eebce594ba4700fdd63df292, type: 2}
   - {fileID: 11400000, guid: 8f7e6f38eebce594ba4700fdd63df292, type: 2}
   waveText: {fileID: 1739403205}
   nextWaveButton: {fileID: 2047372609}

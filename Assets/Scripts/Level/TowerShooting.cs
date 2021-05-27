@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class TowerShooting : MonoBehaviour
     public float BulletSpeed;
     public float Range;
     public int Price;
+    public int UpgradePrice;
+    public TurretFocus Focus = TurretFocus.First;
 
     [SerializeField] private float RangeMargin;
 
@@ -22,6 +25,7 @@ public class TowerShooting : MonoBehaviour
     private EnemyMovement target;
     private float timeRemaining;
     private bool shootwithAlt = false;
+
 
     public void StartRunning(EnemySpawner spawner, GameObject rangeObject)
     {
@@ -142,9 +146,19 @@ public class TowerShooting : MonoBehaviour
     {
         if (!EndGameManager.Instance.hasEnded())
         {
+            SelectedTurretManager.Instance.Deselect();
             foreach (RangeObject range in FindObjectsOfType<RangeObject>())
                 range.gameObject.SetActive(false);
             rangeObject.SetActive(true);
+            SelectedTurretManager.Instance.Select(this);
+        }
+    }
+
+    internal void upgrade()
+    {
+        if (MoneyManager.Instance.CanAfford(UpgradePrice))
+        {
+            UpgradePrice = -1;
         }
     }
 }

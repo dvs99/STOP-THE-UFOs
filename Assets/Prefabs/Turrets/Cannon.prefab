@@ -103,6 +103,8 @@ MonoBehaviour:
   BulletSpeed: 7
   Range: 3
   Price: 400
+  UpgradePrice: 1000
+  Focus: 0
   RangeMargin: 0.15
   bullet: {fileID: 4938592177182993425, guid: 48506e4456963dd4d927e3d7f7ff5b2d, type: 3}
   ShootingOrigin: {fileID: 5370102696079739142}
