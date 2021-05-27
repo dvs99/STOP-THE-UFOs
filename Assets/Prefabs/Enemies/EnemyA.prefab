@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b5bc6b4f64a404ba4c221c9362ce75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
+  speed: 1.5
   value: 2
   spawnOnDeath: 
   spreadOnDeath: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1844097798513850880}
   - component: {fileID: 1033040157144345986}
   m_Layer: 2
-  m_Name: Tower
+  m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   Cooldown: 0.8
   BulletSpeed: 9
   Range: 2
-  Price: 100
+  Price: 400
   bullet: {fileID: 85395274569476907, guid: 3505d6c973ff055438dcdee7715088ea, type: 3}
   ShootingOrigin: {fileID: 5370102696079739142}
   spawner: {fileID: 0}

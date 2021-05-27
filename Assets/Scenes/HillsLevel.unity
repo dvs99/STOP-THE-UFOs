@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15456416, g: 0.25182596, b: 0.30443648, a: 1}
+  m_IndirectSpecularColor: {r: 0.15456398, g: 0.25182572, b: 0.30443582, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -723,34 +723,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 34378532, guid: 3651f4df40a1e164ba2b095bc563aa83, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -944.7998
-      objectReference: {fileID: 0}
-    - target: {fileID: 34378532, guid: 3651f4df40a1e164ba2b095bc563aa83, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -472.4001
-      objectReference: {fileID: 0}
-    - target: {fileID: 34378533, guid: 3651f4df40a1e164ba2b095bc563aa83, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 647374671, guid: 3651f4df40a1e164ba2b095bc563aa83, type: 3}
+      propertyPath: enemySpawner
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1507959165133061656, guid: 3651f4df40a1e164ba2b095bc563aa83, type: 3}
-      propertyPath: m_Name
-      value: Turrets
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 896260539}
     - target: {fileID: 1507959165662107607, guid: 3651f4df40a1e164ba2b095bc563aa83, type: 3}
       propertyPath: enemySpawner
       value: 
       objectReference: {fileID: 896260539}
-    - target: {fileID: 1507959166548229348, guid: 3651f4df40a1e164ba2b095bc563aa83, type: 3}
-      propertyPath: m_Text
-      value: Turrets
-      objectReference: {fileID: 0}
-    - target: {fileID: 1507959167005814624, guid: 3651f4df40a1e164ba2b095bc563aa83, type: 3}
-      propertyPath: m_BlockingMask.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1507959167005814625, guid: 3651f4df40a1e164ba2b095bc563aa83, type: 3}
       propertyPath: m_Name
       value: Canvas

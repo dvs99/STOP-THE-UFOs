@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b5bc6b4f64a404ba4c221c9362ce75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2.5
   value: 30
   spawnOnDeath: 0100000001000000
-  spreadOnDeath: 0.5
+  spreadOnDeath: 0.55
 --- !u!136 &7617168919372512263
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class TowerShooting : MonoBehaviour
 
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform ShootingOrigin;
+    [SerializeField] private Transform ShootingOriginAlt;
     [SerializeField] private EnemySpawner spawner;
 
     private HashSet<EnemyMovement> enemies;
@@ -18,6 +19,7 @@ public class TowerShooting : MonoBehaviour
     private GameObject rangeObject;
     private EnemyMovement target;
     private float timeRemaining;
+    private bool shootwithAlt = false;
 
     public void StartRunning(EnemySpawner spawner, GameObject rangeObject)
     {
@@ -55,13 +57,19 @@ public class TowerShooting : MonoBehaviour
                     targetFirstEnemy();
                     if (target != null)
                     {
-                        float aproxTimeToHit = Vector3.Distance(ShootingOrigin.position, target.transform.position) / BulletSpeed;
+                        Transform shootFrom = ShootingOrigin;
+                        if (shootwithAlt)
+                            shootFrom = ShootingOriginAlt;
+
+                        float aproxTimeToHit = Vector3.Distance(shootFrom.position, target.transform.position) / BulletSpeed;
                         transform.LookAt(target.GetPositionInSeconds(aproxTimeToHit));
                         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-                        GameObject instancedBullet = Instantiate(bullet, ShootingOrigin.position, ShootingOrigin.rotation);
+                        GameObject instancedBullet = Instantiate(bullet, shootFrom.position, shootFrom.rotation);
                         instancedBullet.GetComponent<BulletMovement>().Move(BulletSpeed);
                         target.EstimatedLifeLeft = aproxTimeToHit;
                         timeRemaining = Cooldown;
+                        if (ShootingOriginAlt != null)
+                            shootwithAlt = !shootwithAlt;
                     }
                 }
             }
