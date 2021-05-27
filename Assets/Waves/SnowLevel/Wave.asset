@@ -15,5 +15,6 @@ MonoBehaviour:
   spawnRounds:
   - enemy: 3
     amount: 2
-    secondsAfterEnemy: 10
-    secondsAfterRound: 0
+    secondsAfterEnemy: 5
+    secondsAfterRound: 2
+  moneyValue: 1000

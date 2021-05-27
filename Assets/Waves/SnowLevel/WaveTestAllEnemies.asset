@@ -29,3 +29,4 @@ MonoBehaviour:
     amount: 4
     secondsAfterEnemy: 2
     secondsAfterRound: 4
+  moneyValue: 0

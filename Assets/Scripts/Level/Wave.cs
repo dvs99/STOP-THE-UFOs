@@ -14,4 +14,5 @@ public class Wave : ScriptableObject
     }
 
     public EnemyRound[] spawnRounds;
+    public int moneyValue;
 }
