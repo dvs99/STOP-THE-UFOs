@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Text waveText;
     [SerializeField] private Button nextWaveButton;
 
-    private int waveIndex = 0;
+    private int waveIndex = -1;
     private int waveInnerRoundIndex = 0;
     private int amountIndex = 0;
     private float timer = 0f;
@@ -20,10 +20,9 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        waveText.text = "Wave " + (waveIndex + 1);
-        MoneyManager.Instance.Earn(waves[waveIndex].moneyValue);
+        waveText.text = "Wave  " + (waveIndex + 1);
         nextWaveButton.onClick.AddListener(() => onNextWaveClick());
-        nextWaveButton.interactable = false;
+        nextWaveButton.interactable = true;
     }
 
 

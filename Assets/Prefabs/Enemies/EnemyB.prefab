@@ -50,6 +50,7 @@ MonoBehaviour:
   value: 10
   spawnOnDeath: 00000000
   spreadOnDeath: 0.3
+  damage: 2
 --- !u!136 &9115855247132760400
 CapsuleCollider:
   m_ObjectHideFlags: 0

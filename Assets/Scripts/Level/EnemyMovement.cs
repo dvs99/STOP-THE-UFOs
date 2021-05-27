@@ -8,7 +8,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private int value;
     [SerializeField] private Enemy[] spawnOnDeath;
     [SerializeField] private float spreadOnDeath;
-    
+    [SerializeField] private int damage;
+
 
     private GameObject[] enemyPrefabs;
     private Transform[] path;
@@ -48,7 +49,7 @@ public class EnemyMovement : MonoBehaviour
                 //Got to waypoint
                 if (PathIndex >= path.Length - 1)
                 {
-                    //Got to the end of the level
+                    HPManager.Instance.recieveDamage(damage);
                     Destroy(gameObject);
                 }
                 else

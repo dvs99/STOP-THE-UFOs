@@ -77,6 +77,7 @@ MonoBehaviour:
   value: 2
   spawnOnDeath: 
   spreadOnDeath: 0
+  damage: 1
 --- !u!136 &945811311224696123
 CapsuleCollider:
   m_ObjectHideFlags: 0
