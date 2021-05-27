@@ -1285,6 +1285,7 @@ MonoBehaviour:
   speedUpButton: {fileID: 1507959167001472347}
   destroyText: {fileID: 1507959166027281038}
   speedUpText: {fileID: 1507959165108950184}
+  spedTowers: []
 --- !u!1 &1507959166029918487
 GameObject:
   m_ObjectHideFlags: 0

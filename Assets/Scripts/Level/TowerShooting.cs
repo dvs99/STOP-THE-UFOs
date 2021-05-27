@@ -55,10 +55,12 @@ public class TowerShooting : MonoBehaviour
                     targetFirstEnemy();
                     if (target != null)
                     {
-                        transform.LookAt(target.transform);
+                        float aproxTimeToHit = Vector3.Distance(ShootingOrigin.position, target.transform.position) / BulletSpeed;
+                        transform.LookAt(target.GetPositionInSeconds(aproxTimeToHit));
                         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
                         GameObject instancedBullet = Instantiate(bullet, ShootingOrigin.position, ShootingOrigin.rotation);
                         instancedBullet.GetComponent<BulletMovement>().Move(BulletSpeed);
+                        target.EstimatedLifeLeft = aproxTimeToHit;
                         timeRemaining = Cooldown;
                     }
                 }
@@ -89,7 +91,7 @@ public class TowerShooting : MonoBehaviour
         EnemyMovement firstEnemy = null;
         foreach (EnemyMovement e in enemies)
         {
-            if (e != null)
+            if (e != null && e.EstimatedLifeLeft<-0.1f) //if EstimatedLifeLeft is positive the enemy is already targeted
             {
                 if (e.PathIndex > firstIndexInPath)
                 {
@@ -120,5 +122,12 @@ public class TowerShooting : MonoBehaviour
     {
         Cooldown /= times;
         BulletSpeed *= times;
+    }
+
+    public void Select()
+    {
+        foreach (RangeObject range in FindObjectsOfType<RangeObject>())
+            range.gameObject.SetActive(false);
+        rangeObject.SetActive(true);
     }
 }

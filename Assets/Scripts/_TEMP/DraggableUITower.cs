@@ -16,6 +16,7 @@ public class DraggableUITower : MonoBehaviour
     [SerializeField] private float towerSize;
     [SerializeField] private int groundLayerNumber;
     [SerializeField] private int obstacleLayerNumber;
+    [SerializeField] private int ignoreRaycastLayerNumber;
 
     private RectTransform draggingUICopy;
     private Transform draggingModelCopy;
@@ -65,6 +66,7 @@ public class DraggableUITower : MonoBehaviour
         draggingModelRange.GetComponent<MeshRenderer>().material = dragUnplazableMaterial;
         float diameter = prefab.GetComponent<TowerShooting>().Range * 2;
         draggingModelRange.localScale = new Vector3(diameter, 0.01f, diameter);
+        draggingModelRange.gameObject.AddComponent<RangeObject>();
     }
 
     private void generateImage()
@@ -95,6 +97,7 @@ public class DraggableUITower : MonoBehaviour
             towerObstacle.gameObject.layer = obstacleLayerNumber;
             towerObstacle.transform.position = draggingModelCopy.transform.position;
             towerObstacle.transform.parent = draggingModelCopy;
+            towerObstacle.gameObject.layer = ignoreRaycastLayerNumber;
             draggingModelCopy.GetComponent<TowerShooting>().StartRunning(enemySpawner, draggingModelRange.gameObject);
             draggingModelCopy = Instantiate(prefab, Vector3.zero, prefab.transform.rotation).transform;
             generateRange();

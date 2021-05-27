@@ -23,7 +23,8 @@ public class EnemySpawner : MonoBehaviour
             {
                 //spawn next enemy
                 amountIndex++;
-                Instantiate(enemyPrefabs[(int)waves[waveIndex].spawnRounds[waveInnerRoundIndex].enemy], transform);
+                EnemyMovement enemy = Instantiate(enemyPrefabs[(int)waves[waveIndex].spawnRounds[waveInnerRoundIndex].enemy], transform).GetComponent<EnemyMovement>();
+                enemy.run(path, enemyPrefabs);
                 timer = waves[waveIndex].spawnRounds[waveInnerRoundIndex].secondsAfterEnemy;
             }
             else

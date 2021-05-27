@@ -29,7 +29,7 @@ public class Powerups : MonoBehaviour
     public void destroy()
     {
         foreach (EnemyMovement enemy in FindObjectsOfType<EnemyMovement>())
-            enemy.Kill();
+            enemy.KillNoSpawningNoMoney();
         destroyUses--;
         destroyText.text = destroyUses.ToString();
         if (destroyUses <= 0)
