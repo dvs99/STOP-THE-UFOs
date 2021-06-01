@@ -19,6 +19,8 @@ public class Powerups : MonoBehaviour
     [SerializeField] private GameObject speedUpParticleEffect;
     [SerializeField] private GameObject destroyParticleEffect;
 
+    [SerializeField] private AudioSource audioSourceDestroy;
+
     private TowerShooting[] spedTowers;
     private Queue<GameObject> particleEffects = new Queue<GameObject>();
 
@@ -32,6 +34,7 @@ public class Powerups : MonoBehaviour
 
     public void destroy()
     {
+        audioSourceDestroy.Play();
         Instantiate(destroyParticleEffect);
         foreach (EnemyMovement enemy in FindObjectsOfType<EnemyMovement>())
             enemy.KillNoSpawningNoMoney();

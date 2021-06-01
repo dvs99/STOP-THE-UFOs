@@ -17,8 +17,9 @@ public class TowerShooting : MonoBehaviour
     [SerializeField] private float RangeMargin;
 
     [SerializeField] private GameObject bullet;
-    [SerializeField] private Transform ShootingOrigin;
-    [SerializeField] private Transform ShootingOriginAlt;
+    [SerializeField] private Transform shootingOrigin;
+    [SerializeField] private Transform shootingOriginAlt;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private EnemySpawner spawner;
 
     private HashSet<EnemyMovement> enemies;
@@ -65,21 +66,22 @@ public class TowerShooting : MonoBehaviour
                     targetEnemy();
                     if (target != null)
                     {
-                        Transform shootFrom = ShootingOrigin;
+                        Transform shootFrom = shootingOrigin;
                         if (shootwithAlt)
-                            shootFrom = ShootingOriginAlt;
+                            shootFrom = shootingOriginAlt;
 
                         float aproxTimeToHit = Vector3.Distance(shootFrom.position, target.transform.position) / BulletSpeed;
                         Vector3 futurePos = target.GetPositionInSeconds(aproxTimeToHit);
                         if (Vector3.Distance(transform.position, futurePos) < Range + RangeMargin)
                         {
+                            audioSource.Play();
                             transform.LookAt(futurePos);
                             transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
                             GameObject instancedBullet = Instantiate(bullet, shootFrom.position, shootFrom.rotation);
                             instancedBullet.GetComponent<BulletMovement>().Move(BulletSpeed);
                             target.EstimatedLifeLeft = aproxTimeToHit;
                             timeRemaining = Cooldown;
-                            if (ShootingOriginAlt != null)
+                            if (shootingOriginAlt != null)
                                 shootwithAlt = !shootwithAlt;
                         }
                     }
