@@ -107,7 +107,7 @@ MonoBehaviour:
   value: 50
   spawnOnDeath: 020000000200000002000000
   spreadOnDeath: 0.75
-  damage: 12
+  Damage: 12
 --- !u!1001 &4811214255395222868
 PrefabInstance:
   m_ObjectHideFlags: 0

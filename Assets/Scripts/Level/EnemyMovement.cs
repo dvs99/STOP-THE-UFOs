@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private int value;
     [SerializeField] private Enemy[] spawnOnDeath;
     [SerializeField] private float spreadOnDeath;
-    [SerializeField] private int damage;
+    public int Damage;
 
 
     private GameObject[] enemyPrefabs;
@@ -49,7 +49,7 @@ public class EnemyMovement : MonoBehaviour
                 //Got to waypoint
                 if (PathIndex >= path.Length - 1)
                 {
-                    HPManager.Instance.recieveDamage(damage);
+                    HPManager.Instance.recieveDamage(Damage);
                     KillNoSpawningNoMoney();
                 }
                 else

@@ -62,7 +62,7 @@ public class TowerShooting : MonoBehaviour
                 if (timeRemaining <= 0)
                 {
                     enemies.RemoveWhere(isNull);
-                    targetFirstEnemy();
+                    targetEnemy();
                     if (target != null)
                     {
                         Transform shootFrom = ShootingOrigin;
@@ -104,34 +104,79 @@ public class TowerShooting : MonoBehaviour
             enemies.Remove(other.GetComponent<EnemyMovement>());
     }
 
-    private void targetFirstEnemy()
+    private void targetEnemy()
     {
-        float firstDist = 0;
-        int firstIndexInPath = 0;
-        EnemyMovement firstEnemy = null;
-        foreach (EnemyMovement e in enemies)
+        if (Focus == TurretFocus.First)
         {
-            if (e != null && e.EstimatedLifeLeft<-0.1f) //if EstimatedLifeLeft is positive the enemy is already targeted
+            float firstDist = 0;
+            int firstIndexInPath = 0;
+            EnemyMovement firstEnemy = null;
+            foreach (EnemyMovement e in enemies)
             {
-                if (e.PathIndex > firstIndexInPath)
+                if (e != null && e.EstimatedLifeLeft < -0.1f) //if EstimatedLifeLeft is positive the enemy is already targeted
                 {
-                    firstIndexInPath = e.PathIndex;
-                    firstEnemy = e;
-                    firstDist = Vector3.Distance(e.transform.position, enemyPath[firstIndexInPath].position);
-                }
-                else if (e.PathIndex == firstIndexInPath)
-                {
-                    float dist = Vector3.Distance(e.transform.position, enemyPath[firstIndexInPath].position);
-                    if (dist < firstDist)
+                    if (e.PathIndex > firstIndexInPath)
                     {
+                        firstIndexInPath = e.PathIndex;
                         firstEnemy = e;
-                        firstDist = dist;
+                        firstDist = Vector3.Distance(e.transform.position, enemyPath[firstIndexInPath].position);
+                    }
+                    else if (e.PathIndex == firstIndexInPath)
+                    {
+                        float dist = Vector3.Distance(e.transform.position, enemyPath[firstIndexInPath].position);
+                        if (dist < firstDist)
+                        {
+                            firstEnemy = e;
+                            firstDist = dist;
+                        }
                     }
                 }
+                target = firstEnemy;
             }
-            target = firstEnemy;
+        }
+        else if (Focus == TurretFocus.Last)
+        {
+            float lastDist = float.PositiveInfinity;
+            int lastIndexInPath = int.MaxValue;
+            EnemyMovement lastEnemy = null;
+            foreach (EnemyMovement e in enemies)
+            {
+                if (e != null && e.EstimatedLifeLeft < -0.1f) //if EstimatedLifeLeft is positive the enemy is already targeted
+                {
+                    if (e.PathIndex < lastIndexInPath)
+                    {
+                        lastIndexInPath = e.PathIndex;
+                        lastEnemy = e;
+                        lastDist = Vector3.Distance(e.transform.position, enemyPath[lastIndexInPath].position);
+                    }
+                    else if (e.PathIndex == lastIndexInPath)
+                    {
+                        float dist = Vector3.Distance(e.transform.position, enemyPath[lastIndexInPath].position);
+                        if (dist > lastDist)
+                        {
+                            lastEnemy = e;
+                            lastDist = dist;
+                        }
+                    }
+                }
+                target = lastEnemy;
+            }
+        }
+        else if (Focus == TurretFocus.Strongest)
+        {
+            float bestStrength = 0;
+            EnemyMovement bestEnemy = null;
+            foreach (EnemyMovement e in enemies)
+                if (e != null && e.EstimatedLifeLeft < -0.1f && e.Damage > bestStrength)
+                {
+                    bestStrength = e.Damage;
+                    bestEnemy = e;
+                }
+            target = bestEnemy;
         }
     }
+
+
 
     private bool isNull(EnemyMovement e)
     {
