@@ -1265,7 +1265,6 @@ GameObject:
   - component: {fileID: 308387049}
   - component: {fileID: 308387048}
   - component: {fileID: 308387047}
-  - component: {fileID: 308387046}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1293,19 +1292,6 @@ RectTransform:
   m_AnchoredPosition: {x: -250, y: -164}
   m_SizeDelta: {x: 427, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &308387046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308387044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c6e94e4f6ef5b5429d1707e5d826950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LevelIndex: 1
 --- !u!114 &308387047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,7 +1335,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 308387048}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 301181640}
+        m_TargetAssemblyTypeName: PlayerInteraction, Assembly-CSharp
+        m_MethodName: CloseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &308387048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1908,7 +1906,6 @@ GameObject:
   - component: {fileID: 575618624}
   - component: {fileID: 575618623}
   - component: {fileID: 575618622}
-  - component: {fileID: 575618621}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -1936,19 +1933,6 @@ RectTransform:
   m_AnchoredPosition: {x: 250, y: -164}
   m_SizeDelta: {x: 427, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &575618621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575618619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c6e94e4f6ef5b5429d1707e5d826950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LevelIndex: 2
 --- !u!114 &575618622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1992,7 +1976,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 575618623}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 301181640}
+        m_TargetAssemblyTypeName: PlayerInteraction, Assembly-CSharp
+        m_MethodName: CloseMenus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &575618623
 MonoBehaviour:
   m_ObjectHideFlags: 0

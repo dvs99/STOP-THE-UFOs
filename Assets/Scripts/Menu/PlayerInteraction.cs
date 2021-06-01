@@ -47,4 +47,9 @@ public class PlayerInteraction : MonoBehaviour
 
         movement.enabled = true;
     }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
 }
