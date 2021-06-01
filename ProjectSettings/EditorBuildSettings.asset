@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HillsLevelMulti.unity
     guid: a70311078528a634f9933d5293978547
+  - enabled: 1
+    path: Assets/Scenes/SnowLevelMulti.unity
+    guid: 97377b31980b5a04f91433dbbcde95ba
   m_configObjects: {}
