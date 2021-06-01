@@ -100,7 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cooldown: 1.66
+  UpgradedCooldown: 0.66
   BulletSpeed: 7
+  UpgradedBulletSpeed: 10
   Range: 3
   Price: 400
   UpgradePrice: 1000

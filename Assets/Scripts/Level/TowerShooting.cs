@@ -6,7 +6,9 @@ using UnityEngine;
 public class TowerShooting : MonoBehaviour
 {
     public float Cooldown;
+    [SerializeField] private float UpgradedCooldown;
     public float BulletSpeed;
+    [SerializeField] private float UpgradedBulletSpeed;
     public float Range;
     public int Price;
     public int UpgradePrice;
@@ -159,6 +161,9 @@ public class TowerShooting : MonoBehaviour
         if (MoneyManager.Instance.CanAfford(UpgradePrice))
         {
             UpgradePrice = -1;
+            MoneyManager.Instance.Pay(UpgradePrice);
+            Cooldown = UpgradedCooldown;
+            BulletSpeed = UpgradedBulletSpeed;
         }
     }
 }

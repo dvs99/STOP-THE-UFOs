@@ -99,8 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdfe7eb0d98da44b9a41f612f07c41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cooldown: 0.75
+  Cooldown: 1
+  UpgradedCooldown: 0.3
   BulletSpeed: 10
+  UpgradedBulletSpeed: 15
   Range: 2.5
   Price: 150
   UpgradePrice: 500
