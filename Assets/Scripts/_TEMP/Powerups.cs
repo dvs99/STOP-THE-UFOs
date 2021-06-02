@@ -64,8 +64,13 @@ public class Powerups : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         foreach (TowerShooting tower in spedTowers)
-            if (tower!=null)
-                tower.MultiplySpeed(1/speedUpMultiplier);
+            if (tower != null)
+            {
+                if (tower.UpgradePrice != -1)
+                    tower.MultiplySpeed(1 / speedUpMultiplier);
+                else
+                    tower.ResetUpgradedSpeed();
+            }
 
         while (particleEffects.Count > 0)
             Destroy(particleEffects.Dequeue());

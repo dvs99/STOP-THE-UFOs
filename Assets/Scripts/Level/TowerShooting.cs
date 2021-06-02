@@ -191,6 +191,12 @@ public class TowerShooting : MonoBehaviour
         BulletSpeed *= times;
     }
 
+    public void ResetUpgradedSpeed()
+    {
+        Cooldown = UpgradedCooldown;
+        BulletSpeed = UpgradedBulletSpeed;
+    }
+
     public void Select()
     {
         if (!EndGameManager.Instance.hasEnded())
@@ -203,14 +209,13 @@ public class TowerShooting : MonoBehaviour
         }
     }
 
-    internal void upgrade()
+    public void Upgrade()
     {
         if (MoneyManager.Instance.CanAfford(UpgradePrice))
         {
-            UpgradePrice = -1;
             MoneyManager.Instance.Pay(UpgradePrice);
-            Cooldown = UpgradedCooldown;
-            BulletSpeed = UpgradedBulletSpeed;
+            UpgradePrice = -1;
+            ResetUpgradedSpeed();
         }
     }
 }

@@ -16,7 +16,6 @@ public class DraggableUITower : MonoBehaviour
     [SerializeField] private float towerSize;
     [SerializeField] private int groundLayerNumber;
     [SerializeField] private int obstacleLayerNumber;
-    [SerializeField] private int ignoreRaycastLayerNumber;
 
     private RectTransform draggingUICopy;
     private Transform draggingModelCopy;
@@ -101,7 +100,6 @@ public class DraggableUITower : MonoBehaviour
             towerObstacle.gameObject.layer = obstacleLayerNumber;
             towerObstacle.transform.position = draggingModelCopy.transform.position;
             towerObstacle.transform.parent = draggingModelCopy;
-            towerObstacle.gameObject.layer = ignoreRaycastLayerNumber;
             draggingModelCopy.GetComponent<TowerShooting>().StartRunning(enemySpawner, draggingModelRange.gameObject);
             draggingModelCopy = Instantiate(prefab, Vector3.zero, prefab.transform.rotation).transform;
             generateRange();
@@ -122,7 +120,6 @@ public class DraggableUITower : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(worldPos, Camera.main.transform.forward, out hit, Mathf.Infinity, 1 << groundLayerNumber))
             {
-                Debug.DrawRay(worldPos, Camera.main.transform.forward * hit.distance, Color.yellow);
                 draggingUICopy.gameObject.SetActive(false);
 
                 Vector3 finalPos = worldPos + Camera.main.transform.forward * hit.distance;

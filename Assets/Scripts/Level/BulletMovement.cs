@@ -8,8 +8,16 @@ public class BulletMovement : MonoBehaviour
     [SerializeField] private float explosionRange;
     [SerializeField] private GameObject explosionParticleEffect;
     private float speed;
+    private ParticleSystem part;
+    private bool triggered;
 
     private bool moving = false;
+
+    private void Start()
+    {
+        if (explosionRange > 0)
+            part = Instantiate(explosionParticleEffect, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+    }
 
     public void Move(float speed)
     {
@@ -26,20 +34,27 @@ public class BulletMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        EnemyMovement enemy = other.transform.GetComponent<EnemyMovement>();
-        if (enemy != null)
+        if (!triggered)
         {
-            enemy.Kill();
-            if (explosionRange > 0)
+            triggered = true;
+            EnemyMovement enemy = other.transform.GetComponent<EnemyMovement>();
+            if (enemy != null)
             {
-                Instantiate(explosionParticleEffect, transform.position, Quaternion.identity);
-                foreach (Collider col in Physics.OverlapSphere(transform.position, explosionRange))
-                    col.GetComponent<EnemyMovement>()?.Kill();
+                enemy.Kill();
+                if (explosionRange > 0)
+                {
+                    part.transform.position = transform.position;
+                    part.Play();
+                    foreach (Collider col in Physics.OverlapSphere(transform.position, explosionRange))
+                        col.GetComponent<EnemyMovement>()?.Kill();
+                }
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
+            else if (other.CompareTag("Border"))
+                Destroy(gameObject);
+            else
+                triggered = false;
         }
-        else if (other.CompareTag("Border"))
-            Destroy(gameObject);
     }
 }
 

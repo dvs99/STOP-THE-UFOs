@@ -82,7 +82,7 @@ public class SelectedTurretManager : MonoBehaviour
 
     public void Upgrade()
     {
-        current.upgrade();
+        current.Upgrade();
     }
 
     private void Update()

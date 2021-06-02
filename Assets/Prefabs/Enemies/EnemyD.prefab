@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 7562817204755968333}
   - component: {fileID: 2163289215131059590}
   - component: {fileID: 552036830344401945}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,9 +88,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5297794
-  m_Height: 1.1900098
+  m_Height: 1.0595587
   m_Direction: 1
-  m_Center: {x: 0.0029618144, y: 0.6782583, z: 0}
+  m_Center: {x: 0.0029618144, y: 0.61303276, z: 0}
 --- !u!114 &552036830344401945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  value: 50
+  value: 3
   spawnOnDeath: 020000000200000002000000
   spreadOnDeath: 0.75
   Damage: 12
@@ -178,6 +178,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 057670875d698544aac45cbab54957c8, type: 3}
       propertyPath: m_Name
       value: enemy_ufoPurple (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 057670875d698544aac45cbab54957c8, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1219208355965676504, guid: 057670875d698544aac45cbab54957c8, type: 3}
       propertyPath: m_CastShadows
@@ -360,6 +364,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 057670875d698544aac45cbab54957c8, type: 3}
       propertyPath: m_Name
       value: enemy_ufoPurple
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 057670875d698544aac45cbab54957c8, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1219208355965676504, guid: 057670875d698544aac45cbab54957c8, type: 3}
       propertyPath: m_CastShadows
@@ -556,6 +564,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 057670875d698544aac45cbab54957c8, type: 3}
       propertyPath: m_Name
       value: enemy_ufoPurple (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 057670875d698544aac45cbab54957c8, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1219208355965676504, guid: 057670875d698544aac45cbab54957c8, type: 3}
       propertyPath: m_CastShadows

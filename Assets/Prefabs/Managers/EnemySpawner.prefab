@@ -60,10 +60,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  altPath: []
   enemyPrefabs:
   - {fileID: 5357130665739693900, guid: 77ccb47c9ebf65b4da4014e7f5291baf, type: 3}
   - {fileID: 1576975222724690265, guid: 9b08184d77ec380449e8570d2f52c330, type: 3}
   - {fileID: 85395274569476907, guid: b508c9a6886aa7f45bb1c01d0a297870, type: 3}
   - {fileID: 8906467611546206162, guid: 018669bf0503fe44a96c2878a9573532, type: 3}
   waves:
-  - {fileID: 11400000, guid: 8f7e6f38eebce594ba4700fdd63df292, type: 2}
+  - {fileID: 11400000, guid: 24248f02a115da64ea795b34ab970424, type: 2}
+  - {fileID: 11400000, guid: d96c09256a01fd048870820917bd97bb, type: 2}
+  - {fileID: 11400000, guid: cd8f00aa9fcf7414a9664df0747142ed, type: 2}
+  - {fileID: 11400000, guid: 768bed5a5aecd4746958dbce0ae42d7e, type: 2}
+  - {fileID: 11400000, guid: c45887c670b5d444c99aca40ea21b085, type: 2}
+  - {fileID: 11400000, guid: 12880799bd7be8d4ebf0ed0e94adb7ba, type: 2}
+  - {fileID: 11400000, guid: 3c078dcf02bcc3e45b6426a3c848e385, type: 2}
+  - {fileID: 11400000, guid: 2c8667c0586cf5b4d81e3ddf10cfd1e3, type: 2}
+  waveText: {fileID: 0}
+  nextWaveButton: {fileID: 0}

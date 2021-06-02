@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3924395876706703759}
   - component: {fileID: 9115855247132760400}
   - component: {fileID: 6179130894901769262}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  value: 10
+  value: 1
   spawnOnDeath: 00000000
   spreadOnDeath: 0.3
   Damage: 2
@@ -62,9 +62,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.23514132
-  m_Height: 1
+  m_Height: 0.6663202
   m_Direction: 1
-  m_Center: {x: 0.002703175, y: 0.70000005, z: 0}
+  m_Center: {x: 0.002703175, y: 0.53316015, z: 0}
 --- !u!54 &6179130894901769262
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -214,6 +214,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b19dd85a8e6a70b42bd9fa7d76a6e4cd, type: 3}
       propertyPath: m_Name
       value: enemy_ufoRed_LOD1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b19dd85a8e6a70b42bd9fa7d76a6e4cd, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 939480266394494272, guid: b19dd85a8e6a70b42bd9fa7d76a6e4cd, type: 3}
       propertyPath: m_CastShadows
@@ -413,6 +417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_ufoRed_LOD2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b19dd85a8e6a70b42bd9fa7d76a6e4cd, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 939480266394494272, guid: b19dd85a8e6a70b42bd9fa7d76a6e4cd, type: 3}
       propertyPath: m_CastShadows
       value: 2
@@ -606,6 +614,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b19dd85a8e6a70b42bd9fa7d76a6e4cd, type: 3}
       propertyPath: m_Name
       value: enemy_ufoRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b19dd85a8e6a70b42bd9fa7d76a6e4cd, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 939480266394494272, guid: b19dd85a8e6a70b42bd9fa7d76a6e4cd, type: 3}
       propertyPath: m_CastShadows
